@@ -7,7 +7,7 @@ Original file is located at
     https://colab.research.google.com/drive/1b359TZHn6DmG2Ap8qeKvzssjfRgwEykk
 """
 
-!pip install transformers
+pip install transformers
 
 #for reproducability
 SEED = 34
