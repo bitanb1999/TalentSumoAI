@@ -19,6 +19,7 @@ def install_and_import(package):
 
 
 install_and_import('transformers')
+install_and_import('tensorflow')
 
 #for reproducability
 SEED = 34
