@@ -18,7 +18,7 @@ def install_and_import(package):
         globals()[package] = importlib.import_module(package)
 
 
-install_and_import('transformers')
+install_and_import('transformers[tf-cpu]')
 install_and_import('tensorflow')
 
 #for reproducability
