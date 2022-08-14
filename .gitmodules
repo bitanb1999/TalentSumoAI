@@ -1,0 +1,9 @@
+[submodule "talentsumo"]
+	path = talentsumo
+	url = https://github.com/hritikkarwasra/talentsumo
+[submodule "database/TS_DB-Design"]
+	path = database/TS_DB-Design
+	url = https://github.com/hritikkarwasra/TS_DB-Design.git
+[submodule "API/talentsumo"]
+	path = API/talentsumo
+	url = https://github.com/hritikkarwasra/talentsumo
