@@ -3,8 +3,7 @@
 }
 
 .headingMsg {
-    background-color: #acacac;
-    border-bottom: 2px solid #acacac;
+    border-bottom: 2px solid #000;
 }
 
 @media (max-width: 767.5px) {

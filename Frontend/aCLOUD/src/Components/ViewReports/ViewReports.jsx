@@ -30,91 +30,94 @@ const ViewReports = () => {
                         </div>
                     </div>
                 </div>
-                <div className='d-flex justify-content-center mx-auto mt-5'>
-                    <table className="table table-bordered text-center">
-                        <thead>
-                            <tr className='table-secondary'>
-                                <th className='text-center' colspan="5">Individual Reports</th>
-                            </tr>
-                        </thead>
-                        <thead>
-                            <tr>
-                                <th scope='col'>Candidate ID</th>
-                                <th scope='col'>Name</th>
-                                <th scope='col'>Interaction ID / Response</th>
-                                <th scope='col'>Individual Report</th>
-                                <th scope='col'>Certificate</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>64747</td>
-                                <td>Bhavya Khurana</td>
-                                <td>
-                                    <Link to="/response" target="_blank">
-                                        <button className='btn btn-dark button'>123456</button>
-                                    </Link>
-                                </td>
-                                <td>
-                                    <Link to="/report" target="_blank">
-                                        <button className='btn btn-dark button'>
-                                            View Report
-                                        </button>
-                                    </Link>
-                                </td>
-                                <td>
-                                    <Link to="/certificate" target="_blank">
-                                        <button className='btn btn-dark button'>
-                                            View Certificate
-                                        </button>
-                                    </Link>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>64747</td>
-                                <td>Bhavya Khurana</td>
-                                <td>
-                                    <Link to="/response" target="_blank">
-                                        <button className='btn btn-dark button'>654789</button>
-                                    </Link>
-                                </td>
-                                <td>
-                                    <Link to="/report" target="_blank">
-                                        <button className='btn btn-dark button'>
-                                            View Report
-                                        </button>
-                                    </Link>
-                                </td>
-                                <td>
-                                    <Link to="/certificate" target="_blank">
-                                        <button className='btn btn-dark button'>
-                                            View Certificate
-                                        </button>
-                                    </Link>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>64748</td>
-                                <td>Abc</td>
-                                <td>Abc</td>
-                                <td>
-                                    <Link to="/report" target="_blank">
-                                        <button className='btn btn-dark button'>
-                                            View Report
-                                        </button>
-                                    </Link>
-                                </td>
-                                <td>
-                                    <Link to="/certificate" target="_blank">
-                                        <button className='btn btn-dark button'>
-                                            View Certificate
-                                        </button>
-                                    </Link>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    {/* <div className="col-lg-6">
+                <div className='row mt-5'>
+                    <div className="col-md-6">
+                        <table className="table table-bordered text-center">
+                            <thead>
+                                <tr className='table-secondary'>
+                                    <th className='text-center' colspan="5">Individual Reports</th>
+                                </tr>
+                            </thead>
+                            <thead>
+                                <tr>
+                                    <th scope='col'>Candidate ID</th>
+                                    <th scope='col'>Name</th>
+                                    <th scope='col'>Interaction ID / Response</th>
+                                    <th scope='col'>Individual Report</th>
+                                    <th scope='col'>Certificate</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>64747</td>
+                                    <td>Bhavya Khurana</td>
+                                    <td>
+                                        <Link to="/response" target="_blank">
+                                            <button className='btn btn-dark button'>123456</button>
+                                        </Link>
+                                    </td>
+                                    <td>
+                                        <Link to="/report" target="_blank">
+                                            <button className='btn btn-dark button'>
+                                                View Report
+                                            </button>
+                                        </Link>
+                                    </td>
+                                    <td>
+                                        <Link to="/certificate" target="_blank">
+                                            <button className='btn btn-dark button'>
+                                                View Certificate
+                                            </button>
+                                        </Link>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>64747</td>
+                                    <td>Bhavya Khurana</td>
+                                    <td>
+                                        <Link to="/response" target="_blank">
+                                            <button className='btn btn-dark button'>654789</button>
+                                        </Link>
+                                    </td>
+                                    <td>
+                                        <Link to="/report" target="_blank">
+                                            <button className='btn btn-dark button'>
+                                                View Report
+                                            </button>
+                                        </Link>
+                                    </td>
+                                    <td>
+                                        <Link to="/certificate" target="_blank">
+                                            <button className='btn btn-dark button'>
+                                                View Certificate
+                                            </button>
+                                        </Link>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>64748</td>
+                                    <td>Abc</td>
+                                    <td>Abc</td>
+                                    <td>
+                                        <Link to="/report" target="_blank">
+                                            <button className='btn btn-dark button'>
+                                                View Report
+                                            </button>
+                                        </Link>
+                                    </td>
+                                    <td>
+                                        <Link to="/certificate" target="_blank">
+                                            <button className='btn btn-dark button'>
+                                                View Certificate
+                                            </button>
+                                        </Link>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div className="col-lg-6">
                         <table className="table table-bordered text-center">
                             <thead>
                                 <tr className='table-secondary'>
@@ -150,7 +153,7 @@ const ViewReports = () => {
                                 </tr>
                             </tbody>
                         </table>
-                    </div> */}
+                    </div>
                 </div>
             </div>
         </>

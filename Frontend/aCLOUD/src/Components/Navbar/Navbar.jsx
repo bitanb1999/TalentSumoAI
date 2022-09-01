@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import styles from './Navbar.module.css';
 
-import { FaBars, FaSearch, FaTimes } from 'react-icons/fa';
-
-import brand from '../../assets/Images/brand.png';
+import { FaBars, FaSearch, FaTimes, FaRobot } from 'react-icons/fa';
 
 const Navbar = () => {
 
@@ -31,8 +29,7 @@ const Navbar = () => {
             <nav className={`${styles.navbar} navbar navbar-expand-lg bg-white sticky-top`}>
                 <div className="container-fluid">
                     <Link className="navbar-brand fw-bold fs-3" to="/">
-                        <span className={`${styles.navbarBrand}`}>a</span>CLOUD
-                        {/* <img className='img-fluid' src={brand} height={100} alt="aCloud" /> */}
+                        <span><FaRobot className={`${styles.navbarBrand} me-1`} /></span>CLOUD
                     </Link>
                     <button onClick={handleClick} className={`${styles.navbarToggler} navbar-toggler`} type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 
@@ -48,11 +45,11 @@ const Navbar = () => {
                             <li className={`${styles.navItem} nav-item`}>
                                 <NavLink onClick={handleClick} activeclassname='active' className={`${styles.navLink} nav-link`} aria-current="page" to="/create">Create Interaction</NavLink>
                             </li>
-                            <li className="nav-item">
+                            {/* <li className="nav-item">
                                 <NavLink onClick={handleClick} className={`${styles.navLink} nav-link disabled`} to="/access">Access Details</NavLink>
-                            </li>
+                            </li> */}
                             <li className="nav-item">
-                                <NavLink onClick={handleClick} className={`${styles.navLink} nav-link disabled`} to="/notification&message">Notification & Message</NavLink>
+                                <NavLink onClick={handleClick} className={`${styles.navLink} nav-link disabled`} to="/notification&message">Bots</NavLink>
                             </li>
                         </ul>
                         <div className={`${styles.buttons} d-flex gap-2`}>

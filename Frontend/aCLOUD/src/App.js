@@ -1,10 +1,10 @@
 import './App.css';
-import React, { useState } from 'react';
+import React from 'react';
 import Navbar from './Components/Navbar/Navbar';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Create from './Components/CreateInterview/Create';
-import Access from './Components/AccessInterview/Access';
+// import Access from './Components/AccessInterview/Access';
 import Notification from './Components/InterviewNotification/Notification';
 import Dashboard from './Components/Dashboard/Dashboard';
 import Interaction from './Components/Interaction/Interaction';
@@ -15,7 +15,6 @@ import LeaderboardReport from './Components/LeaderboardReport/LeaderboardReport'
 import Form from './Components/StudentInteractionForm/Form';
 import Login from './Components/Login/Login';
 import SignUp from './Components/SignUp/SignUp';
-import Alert from './Components/Alert/Alert';
 import ViewReports from './Components/ViewReports/ViewReports';
 import Certificate from './Components/Certificate/Certificate';
 import ThankYou from './Components/ThankYou/ThankYou';
@@ -37,25 +36,15 @@ import Text from './Components/Text/Text';
 
 function App() {
 
-  const [alert, setAlert] = useState(null);
-  const showAlert = (message, type, Message) => {
-    setAlert({
-      msg: message,
-      type: type,
-      msgg: Message
-    });
-  }
-
   return (
     <>
       <Router>
         <Navbar />
-        <Alert alert={alert} />
         <Routes>
           <Route exact path='/' element={<Dashboard />} />
           <Route exact path='/create' element={<Create />} />
-          <Route exact path='/access' element={<Access />} />
-          <Route exact path='/notification&message' element={<Notification showAlert={showAlert} />} />
+          {/* <Route exact path='/access' element={<Access />} /> */}
+          <Route exact path='/notification&message' element={<Notification />} />
           <Route exact path='/thankyou' element={<ThankYou />} />
           <Route exact path='/interaction' element={<Interaction />} />
           <Route exact path='/profile' element={<Profile />} />

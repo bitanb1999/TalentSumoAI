@@ -10,14 +10,8 @@ const Create = () => {
 
     const navigate = useNavigate();
 
-    // const [custom, setCustom] = useState(false);
     const [disabled, setDisabled] = useState(false);
     const [certificate, setCertificate] = useState(false);
-
-    // const handleCustom = () => {
-    //     setCustom(!custom);
-    //     setDisabled(!disabled);
-    // }
 
     const handleCertificate = () => {
         setCertificate(!certificate);
@@ -26,7 +20,7 @@ const Create = () => {
 
     const handleClick = (e) => {
         e.preventDefault();
-        navigate('/access');
+        navigate('/notification&message');
     }
 
     return (
@@ -38,7 +32,7 @@ const Create = () => {
                     }
                 `}
             </style>
-            <div className='container mt-5'>
+            <div className='container my-5'>
                 <div className='d-grid col-md-9 mx-auto'>
                     <div className='card border-dark'>
                         <h3 className={`${styles.cardHeader} card-header text-center mb-3 bg-dark text-white`}>
@@ -72,8 +66,6 @@ const Create = () => {
                                             <label htmlFor="track" className="form-label fw-bold">Track/Domain :</label>
                                             <select className="form-select" id='track' aria-label="Default select example">
                                                 <option value="Select...">Select...</option>
-                                                {/* <option value="Custom-A">Custom-A</option>
-                                                <option value="Custom-B">Custom-B</option> */}
                                                 <option value="Sales">Sales</option>
                                                 <option value="Service">Service</option>
                                                 <option value="HR">HR</option>
@@ -96,50 +88,39 @@ const Create = () => {
                                     </div>
                                 </div>
                                 <div className="row">
-                                    {/* <div className="col-md-6">
-                                        <div className='mb-3'>
-                                            <label className="form-label fw-bold">Report Type</label>
-                                            <div className="form-check">
-                                                <input disabled={custom ? false : true} onClick={handleCustom} className="form-check-input" type="radio" name="reportType" id="trackBased" defaultChecked />
-                                                <label className="form-check-label" htmlFor="trackBased">
-                                                    Track Based
-                                                </label>
-                                            </div>
-                                            <div className="form-check">
-                                                <input disabled={custom ? true : false} onClick={handleCustom} className="form-check-input" type="radio" name="reportType" id="custom" />
-                                                <label className="form-check-label" htmlFor="custom">
-                                                    Custom
-                                                </label>
-                                                {
-                                                    custom &&
-                                                    <input type="text" className="form-control mt-2 mb-3" id="custom" placeholder='Custom' aria-describedby="customHelp" />
-                                                }
-                                            </div>
-                                        </div>
-                                    </div> */}
-                                    {/* <div className="col-md-6"> */}
-                                    <div className='mb-3'>
-                                        <label className="form-label fw-bold">Generate Certificate</label>
-                                        <div className='d-flex gap-3'>
-                                            <div className="form-check">
-                                                <input disabled={certificate ? false : true} onClick={handleCertificate} className="form-check-input" type="radio" name="generateCertificate" id="no" defaultChecked />
-                                                <label className="form-check-label" htmlFor="no">
-                                                    No
-                                                </label>
-                                            </div>
-                                            <div className="form-check">
-                                                <input disabled={certificate ? true : false} onClick={handleCertificate} className="form-check-input" type="radio" name="generateCertificate" id="yes" />
-                                                <label className="form-check-label" htmlFor="yes">
-                                                    Yes
-                                                </label>
-                                                {
-                                                    certificate &&
-                                                    <input type="text" className="form-control mt-2 mb-3" id="certificate" placeholder='Certificate Name' />
-                                                }
-                                            </div>
+                                    <div className="col-md-6">
+                                        <div className="mb-3">
+                                            <label htmlFor="accessCode" className="form-label fw-bold">Access Code</label>
+                                            <input type="number" className="form-control" placeholder='Enter 6-digit access code' id="accessCode" aria-describedby="accessHelp" />
                                         </div>
                                     </div>
-                                    {/* </div> */}
+                                    <div className="col-md-6">
+                                        <div className="mb-3">
+                                            <label htmlFor="expiryDate" className="form-label fw-bold">Expiry Date</label>
+                                            <input type="date" className="form-control" id="expiryDate" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className='mb-3'>
+                                    <label className="form-label fw-bold">Generate Certificate</label>
+                                    <div className='d-flex gap-3'>
+                                        <div className="form-check">
+                                            <input disabled={certificate ? false : true} onClick={handleCertificate} className="form-check-input" type="radio" name="generateCertificate" id="no" defaultChecked />
+                                            <label className="form-check-label" htmlFor="no">
+                                                No
+                                            </label>
+                                        </div>
+                                        <div className="form-check">
+                                            <input disabled={certificate ? true : false} onClick={handleCertificate} className="form-check-input" type="radio" name="generateCertificate" id="yes" />
+                                            <label className="form-check-label" htmlFor="yes">
+                                                Yes
+                                            </label>
+                                            {
+                                                certificate &&
+                                                <input type="text" className="form-control mt-2 mb-3" id="certificate" placeholder='Certificate Name' />
+                                            }
+                                        </div>
+                                    </div>
                                 </div>
                                 <div className="row">
                                     <div className="col-md-6">
