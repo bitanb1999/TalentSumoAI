@@ -24,12 +24,12 @@ const Dashboard = () => {
                         <div className={`${styles.card} card h-100`}>
                             <div className="card-body">
                                 <div className={`${styles.row} row`}>
-                                    <div className="col-md-6 text-white">
+                                    <div className="col-md-6">
                                         <h3>
                                             <SiHomebrew />
                                         </h3>
                                         <h3 className='card-title'>Welcome, Username!</h3>
-                                        <p className='text-white'>Get familiar with the dashboard, here are some ways to get started.</p>
+                                        <p className='text-dark'>Get familiar with the dashboard, here are some ways to get started.</p>
                                     </div>
                                     <div className="col-md-6 my-3">
                                         <img className={`${styles.img} img-fluid d-flex justify-content-center mx-auto`} src={dashboard} width={250} alt="dashboard" />
