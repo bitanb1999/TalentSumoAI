@@ -23,6 +23,10 @@ const Navbar = () => {
                         font-weight: bold !important;
                         border-bottom: 3px solid #6c757d !important;
                     }
+
+                    .button {
+                        border-radius : 0;
+                    }
                 `}
             </style>
 
