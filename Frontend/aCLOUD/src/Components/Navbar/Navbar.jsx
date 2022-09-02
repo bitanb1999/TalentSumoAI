@@ -33,7 +33,7 @@ const Navbar = () => {
             <nav className={`${styles.navbar} navbar navbar-expand-lg bg-white sticky-top`}>
                 <div className="container-fluid">
                     <Link className="navbar-brand fw-bold fs-3" to="/">
-                        <span><FaRobot className={`${styles.navbarBrand} me-1`} /></span>CLOUD
+                        <span className='bg-dark text-white p-2'>A</span>cloud
                     </Link>
                     <button onClick={handleClick} className={`${styles.navbarToggler} navbar-toggler`} type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 

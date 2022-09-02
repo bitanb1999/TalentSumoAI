@@ -140,10 +140,10 @@ const GeneralVariables = () => {
                             <h5 className={`${styles.cardHeader} card-header text-white`}><AiFillDashboard className={`me-1 ${styles.icon}`} />Pace</h5>
                             <div className="card-body">
                                 <h6 align="justify" className='card-text'>
-                                    <strong>Words per minute : </strong>
+                                    <strong>Words per minute : </strong>pace
                                 </h6>
                                 <h6 align="justify" className='card-text'>
-                                    <strong>Ideal words per minute : </strong> xx words/minute
+                                    <strong>Ideal words per minute : </strong> 140-160 words/minute
                                 </h6>
                                 <div className='mb-3'>
                                     <div className="progress">
