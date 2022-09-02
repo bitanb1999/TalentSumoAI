@@ -16,16 +16,6 @@ const Navbar = () => {
 
     return (
         <>
-            <style jsx='true'>
-                {`
-                    .active {
-                        color: #6c757d !important;
-                        font-weight: bold !important;
-                        border-bottom: 3px solid #6c757d !important;
-                    }
-                `}
-            </style>
-
             <nav className={`${styles.navbar} navbar navbar-expand-lg bg-white sticky-top`}>
                 <div className="container-fluid">
                     <Link className="navbar-brand fw-bold fs-3" to="/">Student <span className='bg-dark text-white p-2'>Panel</span></Link>

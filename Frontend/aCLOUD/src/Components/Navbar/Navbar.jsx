@@ -43,13 +43,13 @@ const Navbar = () => {
                                 <NavLink onClick={handleClick} className={`${styles.navLink} nav-link`} to="/">Dashboard</NavLink>
                             </li>
                             <li className={`${styles.navItem} nav-item`}>
-                                <NavLink onClick={handleClick} activeclassname='active' className={`${styles.navLink} nav-link`} aria-current="page" to="/create">Create Interaction</NavLink>
+                                <NavLink onClick={handleClick} activeclassname='active' className={`${styles.navLink} nav-link`} aria-current="page" to="/create">Internal Bots</NavLink>
                             </li>
                             {/* <li className="nav-item">
                                 <NavLink onClick={handleClick} className={`${styles.navLink} nav-link disabled`} to="/access">Access Details</NavLink>
                             </li> */}
                             <li className="nav-item">
-                                <NavLink onClick={handleClick} className={`${styles.navLink} nav-link disabled`} to="/notification&message">Bots</NavLink>
+                                <NavLink onClick={handleClick} className={`${styles.navLink} nav-link disabled`} to="/notification&message">External Bots</NavLink>
                             </li>
                         </ul>
                         <div className={`${styles.buttons} d-flex gap-2`}>
