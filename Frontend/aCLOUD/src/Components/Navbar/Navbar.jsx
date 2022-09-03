@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import styles from './Navbar.module.css';
 
-import { FaBars, FaSearch, FaTimes, FaRobot } from 'react-icons/fa';
+import { FaBars, FaSearch, FaTimes } from 'react-icons/fa';
+
+import brand from "../../assets/Images/brand.png";
 
 const Navbar = () => {
 
@@ -33,7 +35,7 @@ const Navbar = () => {
             <nav className={`${styles.navbar} navbar navbar-expand-lg bg-white sticky-top`}>
                 <div className="container-fluid">
                     <Link className="navbar-brand fw-bold fs-3" to="/">
-                        <span className='bg-dark text-white p-2'>A</span>cloud
+                        <img src={brand} alt="brand" width={150} className="img-fluid" />
                     </Link>
                     <button onClick={handleClick} className={`${styles.navbarToggler} navbar-toggler`} type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 

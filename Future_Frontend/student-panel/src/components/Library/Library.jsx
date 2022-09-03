@@ -2,9 +2,11 @@ import React from 'react';
 import styles from './Library.module.css';
 
 import { TbBrandMeta } from 'react-icons/tb';
-import { FaApple, FaAmazon, FaGoogle, FaBuilding, FaFileAlt, FaRobot } from 'react-icons/fa';
+import { FaApple, FaAmazon, FaGoogle, FaBuilding, FaFileAlt } from 'react-icons/fa';
 import { SiNetflix } from 'react-icons/si';
 import { BiGitBranch } from 'react-icons/bi';
+
+import brand from '../../assets/Images/favicon.png';
 
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -245,7 +247,7 @@ const Library = () => {
             </div>
 
             <div className='p-2 bg-dark my-5'>
-                <h1 className='text-center text-white'>Thank You for choosing <FaRobot className={styles.logo} /> Cloud</h1>
+                <h1 className='text-center text-white'>Thank You for choosing <img src={brand} alt="brand" width={75} className='img-fluid' />CLOUD</h1>
             </div>
         </>
     )

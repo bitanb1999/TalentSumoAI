@@ -9,7 +9,7 @@ const Track = () => {
     <>
       <div
         className="modal fade modal-lg"
-        id="exampleModal1"
+        id="skillModal"
         tabIndex="-1"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
