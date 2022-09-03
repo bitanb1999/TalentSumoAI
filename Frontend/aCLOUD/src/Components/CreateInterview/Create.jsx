@@ -140,7 +140,7 @@ const Create = () => {
                                     <div className="col-md-6 m-auto">
                                         <div className="d-flex justify-content-between mb-3">
                                             <label htmlFor="question" className="form-label fw-bold">Skills: <span className='badge badge bg-secondary'>skill name</span></label>
-                                            <button type="button" className="btn btn-outline-secondary button" data-bs-toggle="modal" data-bs-target="#exampleModal1">Add</button>
+                                            <button type="button" className="btn btn-outline-secondary button" data-bs-toggle="modal" data-bs-target="#skillModal">Add</button>
                                         </div>
                                     </div>
                                     <div className="col-md-6 m-auto">
