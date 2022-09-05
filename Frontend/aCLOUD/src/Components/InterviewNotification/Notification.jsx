@@ -30,8 +30,7 @@ const Notification = () => {
         "response.json",
         {
           interaction_welcome_message: create.interaction_welcome_message,
-          interaction_instruction_message:
-            create.interaction_instruction_message,
+          interaction_instruction_message:create.interaction_instruction_message,
           interaction_completion_message: create.interaction_completion_message,
           bot_warning_message: create.bot_warning_message,
           report_send_to_user: create.report_send_to_user,
