@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import styles from './Image.module.css';
 import { useNavigate } from 'react-router-dom';
 
+import axios from 'axios';
+
 const Image = () => {
 
     const navigate = useNavigate();
@@ -14,6 +16,25 @@ const Image = () => {
             setImageUrl(URL.createObjectURL(selectedImage));
         }
     }, [selectedImage]);
+
+    const handleClick = () => {
+        axios
+        .post(
+          "response.json",
+          {
+            imageUrl: imageUrl,
+          },
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
+        .then((res) => {
+          console.log(res.data);
+        });
+    }
 
     return (
         <>
@@ -39,7 +60,7 @@ const Image = () => {
                             <hr />
                             <input onChange={(e) => setSelectedImage(e.target.files[0])} className="form-control" type="file" id="select-image" />
                             <div className="d-flex gap-2 my-3 float-end">
-                                <button className="btn btn-outline-secondary" htmlFor="select-image">
+                                <button onClick={handleClick} className="btn btn-outline-secondary" htmlFor="select-image">
                                     Upload
                                 </button>
                                 <button onClick={() => navigate("/text")} className="btn btn-dark float-end">Save and Next</button>

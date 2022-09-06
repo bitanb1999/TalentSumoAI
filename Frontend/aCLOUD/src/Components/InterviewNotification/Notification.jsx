@@ -29,6 +29,13 @@ const Notification = () => {
       .post(
         "response.json",
         {
+          who_can_initiate: create.who_can_initiate,
+          timer: create.timer,
+          collect_mail: create.collect_mail,
+          collect_resume: create.collect_resume,
+          collect_candidate_feedback_message: create.collect_candidate_feedback_message,
+          collect_channel: create.collect_channel,
+          collect_candidate_id: create.collect_candidate_id,
           interaction_welcome_message: create.interaction_welcome_message,
           interaction_instruction_message:create.interaction_instruction_message,
           interaction_completion_message: create.interaction_completion_message,
@@ -129,7 +136,9 @@ const Notification = () => {
                       >
                         Who can Initiate ?
                       </label>
-                      <select className="form-select" id="whoInitiate">
+                      <select className="form-select" id="whoInitiate" onChange={handleOnChange}
+                        name="who_can_initiate"
+                        value={create.who_can_initiate}>
                         <option value="Select">Select...</option>
                         <option value="Bot">Bot</option>
                         <option value="User">User</option>
@@ -147,6 +156,9 @@ const Notification = () => {
                       <select
                         className="form-select"
                         id="whoInitiate"
+                        onChange={handleOnChange}
+                        name="timer"
+                        value={create.timer}
                         aria-label="Default select example"
                       >
                         <option value="Select">Select...</option>
@@ -170,7 +182,9 @@ const Notification = () => {
                         <input
                           className="form-check-input"
                           type="radio"
-                          name="collectEmail"
+                          name="collect_mail"
+                          onChange={handleOnChange}
+                        value="yes"
                           id="yes"
                         />
                         <label className="form-check-label" htmlFor="yes">
@@ -181,7 +195,9 @@ const Notification = () => {
                         <input
                           className="form-check-input"
                           type="radio"
-                          name="collectEmail"
+                          name="collect_mail"
+                          onChange={handleOnChange}
+                        value="no"
                           id="no"
                           defaultChecked
                         />
@@ -203,7 +219,9 @@ const Notification = () => {
                         <input
                           className="form-check-input"
                           type="radio"
-                          name="CollectResume"
+                          name="collect_resume"
+                          onChange={handleOnChange}
+                        value="yes"
                           id="yesResume"
                         />
                         <label className="form-check-label" htmlFor="yesResume">
@@ -214,7 +232,9 @@ const Notification = () => {
                         <input
                           className="form-check-input"
                           type="radio"
-                          name="CollectResume"
+                          name="collect_resume"
+                          onChange={handleOnChange}
+                        value="no"
                           id="noResume"
                           defaultChecked
                         />
@@ -236,7 +256,9 @@ const Notification = () => {
                         <input
                           className="form-check-input"
                           type="radio"
-                          name="CandidateFeedback"
+                          name="collect_candidate_feedback_message"
+                          onChange={handleOnChange}
+                        value="yes"
                           id="yesFeedbackMessage"
                         />
                         <label
@@ -250,7 +272,9 @@ const Notification = () => {
                         <input
                           className="form-check-input"
                           type="radio"
-                          name="CandidateFeedback"
+                          name="collect_candidate_feedback_message"
+                          onChange={handleOnChange}
+                        value="no"
                           id="noFeedbackMessage"
                           defaultChecked
                         />
@@ -319,7 +343,7 @@ const Notification = () => {
                       <div className="form-check mb-3">
                         <input
                           className="form-check-input"
-                          type="checkbox"
+                          type="checkbox" 
                           defaultChecked
                           id="form"
                         />
@@ -342,7 +366,9 @@ const Notification = () => {
                         <input
                           className="form-check-input"
                           type="radio"
-                          name="CollectID"
+                          name="collect_candidate_id"
+                          onChange={handleOnChange}
+                        value="yes"
                           id="yesId"
                         />
                         <label className="form-check-label" htmlFor="yesId">
@@ -353,7 +379,9 @@ const Notification = () => {
                         <input
                           className="form-check-input"
                           type="radio"
-                          name="CollectID"
+                          name="collect_candidate_id"
+                          onChange={handleOnChange}
+                        value="no"
                           id="noId"
                           defaultChecked
                         />

@@ -3,6 +3,8 @@ import styles from './AudioRecording.module.css';
 import { useNavigate } from "react-router-dom";
 import { useReactMediaRecorder } from "react-media-recorder";
 
+import axios from 'axios';
+
 const AudioRecording = () => {
   const navigate = useNavigate();
 
@@ -75,6 +77,22 @@ const AudioRecording = () => {
 
   const handleNext = () => {
     navigate('/mcq')
+    axios
+      .post(
+        "response.json",
+        {
+          audio: mediaBlobUrl,
+        },
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res.data);
+      });
   }
 
   return (

@@ -226,7 +226,7 @@ const Create = () => {
                         id="no"
                         onChange={handleOnChange}
                         name="generate_certificate"
-                        value={create.generate_certificate}
+                        value="no"
                         defaultChecked
                       />
                       <label className="form-check-label" htmlFor="no">
@@ -242,7 +242,7 @@ const Create = () => {
                         id="yes"
                         onChange={handleOnChange}
                         name="generate_certificate"
-                        value={create.generate_certificate}
+                        value="yes"
                       />
                       <label className="form-check-label" htmlFor="yes">
                         Yes

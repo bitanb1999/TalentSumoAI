@@ -1,7 +1,9 @@
-import React, { useRef, useEffect, useState } from 'react';
-import styles from './Question.module.css';
+import React, { useRef, useEffect, useState } from "react";
+import styles from "./Question.module.css";
 import { useNavigate } from "react-router-dom";
 import { useReactMediaRecorder } from "react-media-recorder";
+
+import axios from "axios";
 
 const VideoPreview = ({ stream }) => {
   const videoRef = useRef(null);
@@ -20,7 +22,6 @@ const VideoPreview = ({ stream }) => {
 const Question = () => {
   // const [second, setSecond] = useState("00");
   // const [minute, setMinute] = useState("00");
-  const [isActive, setIsActive] = useState(false);
   // const [counter, setCounter] = useState(0);
 
   // useEffect(() => {
@@ -49,6 +50,8 @@ const Question = () => {
 
   //   return () => clearInterval(intervalId);
   // }, [isActive, counter]);
+  const [isActive, setIsActive] = useState(false);
+  const [create, setCreate] = useState([]);
 
   const {
     status,
@@ -56,18 +59,34 @@ const Question = () => {
     startRecording,
     stopRecording,
     pauseRecording,
-    mediaBlobUrl
+    mediaBlobUrl,
   } = useReactMediaRecorder({
     video: true,
     audio: true,
-    echoCancellation: true
+    echoCancellation: true,
   });
 
   const navigate = useNavigate();
 
   const handleNext = () => {
-    navigate('/audiorecording');
-  }
+    navigate("/audiorecording");
+    axios
+      .post(
+        "response.json",
+        {
+          video: mediaBlobUrl,
+        },
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res.data);
+      });
+  };
 
   const handleStartRecording = () => {
     if (!isActive) {
@@ -78,38 +97,68 @@ const Question = () => {
 
     setIsActive(!isActive);
 
-    document.getElementById("instruction").innerHTML = isActive ? "Paused" : "Started";
-  }
+    document.getElementById("instruction").innerHTML = isActive
+      ? "Paused"
+      : "Started";
+  };
 
   const handleStopRecording = () => {
     pauseRecording();
     stopRecording();
     setIsActive(isActive);
     document.getElementById("instruction").innerHTML = "Stopped";
+  };
 
-  }
+  // const handleOnChange = (e) => {
+  //   setCreate({ ...create, [e.target.name]: e.target.value });
+  // };
 
   return (
     <>
       <div className={`${styles.container} container my-5`}>
         <div className="row">
           <div className="col-md-4 bg-dark">
-            <div className='d-flex justify-content-center align-items-center flex-column'>
-              <h5 className='card-header bg-white text-center w-100 my-3 p-2' id='instruction'>Idle</h5>
+            <div className="d-flex justify-content-center align-items-center flex-column">
+              <h5
+                className="card-header bg-white text-center w-100 my-3 p-2"
+                id="instruction"
+              >
+                Idle
+              </h5>
               {status !== "stopped" ? (
                 <VideoPreview stream={previewStream} />
               ) : (
-                <video className='w-100' src={mediaBlobUrl} height={300} controls />
+                <video
+                  className="w-100"
+                  src={mediaBlobUrl}
+                  height={300}
+                  controls
+                />
               )}
               {/* <div className='d-flex justify-content-center fs-1 text-white'>
                 <span className="minute">{minute}</span>
                 <span>:</span>
                 <span className="second">{second}</span>
               </div> */}
-              <button className='btn btn-light mt-3' onClick={() => window.location.reload()}>Retake</button>
-              <div className='d-flex justify-content-center mx-auto gap-3 my-3'>
-                <button onClick={handleStartRecording} className={`${isActive ? "btn-warning" : "btn-success"} btn `}>{isActive ? "Pause Recording" : "Start Recording"}</button>
-                <button onClick={handleStopRecording} className="btn btn-danger">Stop Recording</button>
+              <button
+                className="btn btn-light mt-3"
+                onClick={() => window.location.reload()}
+              >
+                Retake
+              </button>
+              <div className="d-flex justify-content-center mx-auto gap-3 my-3">
+                <button
+                  onClick={handleStartRecording}
+                  className={`${isActive ? "btn-warning" : "btn-success"} btn `}
+                >
+                  {isActive ? "Pause Recording" : "Start Recording"}
+                </button>
+                <button
+                  onClick={handleStopRecording}
+                  className="btn btn-danger"
+                >
+                  Stop Recording
+                </button>
               </div>
             </div>
           </div>
@@ -117,13 +166,18 @@ const Question = () => {
             <div className="container my-3">
               <h4>How you are doing ?</h4>
               <hr />
-              <button onClick={handleNext} className="btn btn-dark float-end mb-3">Save and Next</button>
+              <button
+                onClick={handleNext}
+                className="btn btn-dark float-end mb-3"
+              >
+                Save and Next
+              </button>
             </div>
           </div>
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Question
+export default Question;
