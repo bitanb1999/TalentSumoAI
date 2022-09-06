@@ -3,10 +3,14 @@ import styles from "./Profile.module.css";
 import Profilepic from "./Profilepic";
 import { FaUser, FaPenSquare } from "react-icons/fa";
 
+import axios from "axios";
+
 import { countries } from "../../assets/Countries/countries";
 
 const Profile = () => {
   const [style, setStyle] = useState({ display: "none" });
+  const [create, setCreate] = useState([]);
+
   const mouseEnter = () => {
     setStyle({
       display: "block",
@@ -20,16 +24,49 @@ const Profile = () => {
   };
   const mouseLeave = () => {
     setStyle({
-      display: 'none'
-    })
+      display: "none",
+    });
   };
+
+  const handleSubmit = () => {
+    axios
+      .post(
+        "response.json",
+        {
+          firstName: create.firstName,
+          lastName: create.lastName,
+          email: create.email,
+          phoneNumber: create.phoneNumber,
+          companyName: create.companyName,
+          country: create.country,
+          linkedIn: create.linkedIn,
+          facebook: create.facebook,
+          twitter: create.twitter,
+          instagram: create.instagram,
+        },
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res.data);
+      });
+  };
+
+  const handleOnChange = (e) => {
+    setCreate({ ...create, [e.target.name]: e.target.value });
+  };
+
   return (
     <>
       <style jsx="true">
         {`
-            .button {
-                  border-radius: 0;
-            }
+          .button {
+            border-radius: 0;
+          }
         `}
       </style>
       <div className="mt-5 container">
@@ -77,6 +114,9 @@ const Profile = () => {
                         className="form-control"
                         id="fName"
                         placeholder="First Name"
+                        onChange={handleOnChange}
+                        value={create.firstName}
+                        name="firstName"
                       />
                     </div>
                   </div>
@@ -87,6 +127,9 @@ const Profile = () => {
                         className="form-control"
                         id="lName"
                         placeholder="Last Name"
+                        onChange={handleOnChange}
+                        value={create.lastName}
+                        name="lastName"
                       />
                     </div>
                   </div>
@@ -99,6 +142,9 @@ const Profile = () => {
                         className="form-control"
                         id="emailAddress"
                         placeholder="Email address"
+                        onChange={handleOnChange}
+                        value={create.email}
+                        name="email"
                       />
                     </div>
                   </div>
@@ -109,6 +155,9 @@ const Profile = () => {
                         className="form-control"
                         id="contactNumber"
                         placeholder="Phone Number"
+                        onChange={handleOnChange}
+                        value={create.phoneNumber}
+                        name="phoneNumber"
                       />
                     </div>
                   </div>
@@ -121,6 +170,9 @@ const Profile = () => {
                         className="form-control"
                         id="companyName"
                         placeholder="Company Name"
+                        onChange={handleOnChange}
+                        value={create.companyName}
+                        name="companyName"
                       />
                     </div>
                   </div>
@@ -129,6 +181,9 @@ const Profile = () => {
                       <select
                         className="form-select"
                         aria-label="Default select example"
+                        onChange={handleOnChange}
+                        value={create.country}
+                        name="country"
                       >
                         <option value="Select Country">Select Country</option>
                         {countries.map((item) => (
@@ -148,6 +203,9 @@ const Profile = () => {
                           className="form-control"
                           id="linkedin"
                           placeholder="LinkedIn"
+                          onChange={handleOnChange}
+                          value={create.linkedIn}
+                          name="linkedIn"
                         />
                       </div>
                     </div>
@@ -158,6 +216,9 @@ const Profile = () => {
                           className="form-control"
                           id="facebook"
                           placeholder="Facebook"
+                          onChange={handleOnChange}
+                          value={create.facebook}
+                          name="facebook"
                         />
                       </div>
                     </div>
@@ -170,6 +231,9 @@ const Profile = () => {
                           className="form-control"
                           id="twitter"
                           placeholder="Twitter"
+                          onChange={handleOnChange}
+                          value={create.twitter}
+                          name="twitter"
                         />
                       </div>
                     </div>
@@ -180,12 +244,20 @@ const Profile = () => {
                           className="form-control"
                           id="instagram"
                           placeholder="Instagram"
+                          onChange={handleOnChange}
+                          value={create.instagram}
+                          name="instagram"
                         />
                       </div>
                     </div>
                   </div>
 
-                  <button className="btn btn-dark button">Submit Details</button>
+                  <button
+                    onClick={handleSubmit}
+                    className="btn btn-dark button"
+                  >
+                    Submit Details
+                  </button>
                 </div>
               </div>
             </div>

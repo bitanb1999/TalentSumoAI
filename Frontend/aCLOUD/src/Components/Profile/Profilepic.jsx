@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Profilepic.module.css";
 
+import axios from 'axios';
+
+
 const Profilepic = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
@@ -10,6 +13,26 @@ const Profilepic = () => {
       setImageUrl(URL.createObjectURL(selectedImage));
     }
   }, [selectedImage]);
+
+  const handleUpload = () => {
+    axios
+      .post(
+        "response.json",
+        {
+          imageUrl: imageUrl
+        },
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res.data);
+      });
+  }
+
   return (
     <>
       <style jsx="true">
@@ -54,6 +77,7 @@ const Profilepic = () => {
               <input accept="image/*" onChange={(e) => setSelectedImage(e.target.files[0])} className="form-control" type="file" id="select-image" />
               <div className="d-flex justify-content-center mx-auto">
                 <button
+                  onClick={handleUpload}
                   className="btn btn-dark mt-3 button"
                   htmlFor="select-image"
                 >
