@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 
+import axios from 'axios';
+
 const Quesans = () => {
   const [noOfRows, setNoOfRows] = useState(1);
   const [text, setText] = useState("Select...");
   const [texts, setTexts] = useState("Select...");
   const [display, setDisplay] = useState({ display: "none" });
   const [rated, setRated] = useState({ display: "none" });
+  const [create, setCreate] = useState([]);
 
   const handleOnChange = (event) => {
     setText(event.target.value);
@@ -14,6 +17,7 @@ const Quesans = () => {
     } else {
       setDisplay({ display: "none" });
     }
+    setCreate({ ...create, [event.target.name]: event.target.value });
   };
 
   const handleOnChanges = (event) => {
@@ -23,6 +27,39 @@ const Quesans = () => {
     } else {
       setRated({ display: "none" });
     }
+    setCreate({ ...create, [event.target.name]: event.target.value });
+  };
+
+  const handleSubmit = () => {
+    axios
+    .post(
+      "response.json",
+      {
+        question: create.question,       
+        answer_format: text,
+        mcq_option_one: create.mcq_option_one,
+        mcq_option_two: create.mcq_option_two,
+        mcq_option_three: create.mcq_option_three,
+        mcq_option_four: create.mcq_option_four,
+        mcq_option: create.mcq_option,
+        ideal_answer: create.ideal_answer,
+        rated_value: texts,
+        content_rated: create.content_rated
+      },
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
+    .then((res) => {
+      console.log(res.data);
+    });
+  }
+
+  const handChange = (e) => {
+    setCreate({ ...create, [e.target.name]: e.target.value });
   };
 
   const style = {
@@ -51,7 +88,7 @@ const Quesans = () => {
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title" id="exampleModalLabel">
-                Total Questions:{" "}
+                Total Questions:
                 <span className="badge badge bg-secondary">No.</span>
               </h5>
               <button
@@ -107,12 +144,16 @@ const Quesans = () => {
                               className="form-control"
                               id="question"
                               rows="1"
+                              onChange={handChange}
+                        name="question"
+                        value={create.question}
                             ></textarea>
                           </td>
                           <td>
                             <select
                               onChange={handleOnChange}
                               value={text}
+                              name="answer_format"
                               className="form-select"
                               id="answer"
                               aria-label="Default select example"
@@ -131,6 +172,9 @@ const Quesans = () => {
                               className="form-control"
                               id="option1"
                               rows="1"
+                              onChange={handChange}
+                        name="mcq_option_one"
+                        value={create.mcq_option_one}
                             ></textarea>
                           </td>
                           <td style={display}>
@@ -138,6 +182,9 @@ const Quesans = () => {
                               className="form-control"
                               id="option2"
                               rows="1"
+                              onChange={handChange}
+                              name="mcq_option_two"
+                              value={create.mcq_option_two}
                             ></textarea>
                           </td>
                           <td style={display}>
@@ -145,6 +192,9 @@ const Quesans = () => {
                               className="form-control"
                               id="option3"
                               rows="1"
+                              onChange={handChange}
+                              name="mcq_option_three"
+                              value={create.mcq_option_three}
                             ></textarea>
                           </td>
                           <td style={display}>
@@ -152,12 +202,18 @@ const Quesans = () => {
                               className="form-control"
                               id="option4"
                               rows="1"
+                              onChange={handChange}
+                              name="mcq_option_four"
+                              value={create.mcq_option_four}
                             ></textarea>
                           </td>
                           <td style={display}>
                             <select
                               className="form-select"
                               id="rightAnswer"
+                              onChange={handChange}
+                              name="mcq_option"
+                              value={create.mcq_option}
                             >
                               <option value="Select...">Select...</option>
                               <option value="Option 1">Option 1</option>
@@ -171,6 +227,9 @@ const Quesans = () => {
                               className="form-control"
                               id="idealAnswer"
                               rows="1"
+                              onChange={handChange}
+                              name="ideal_answer"
+                              value={create.ideal_answer}
                             ></textarea>
                           </td>
                           <td>
@@ -180,7 +239,7 @@ const Quesans = () => {
                               className="form-select"
                               id="rated"
                             >
-                              <option selected>Select...</option>
+                              <option selected value="Select...">Select...</option>
                               <option>Yes</option>
                               <option>No</option>
                             </select>
@@ -190,6 +249,9 @@ const Quesans = () => {
                               style={rated}
                               className="form-select"
                               id="contentRated"
+                              onChange={handChange}
+                              name="content_rated"
+                              value={create.content_rated}
                             >
                               <option selected value="Select...">
                                 Select...
@@ -229,11 +291,11 @@ const Quesans = () => {
                   type="button"
                   className="btn btn-outline-secondary mx-1"
                   data-bs-toggle="modal"
-                  data-bs-target="#exampleModal4"
+                  data-bs-target="#internalBotModal"
                 >
                   Close
                 </button>
-                <button type="button" className="btn btn-dark mx-1">
+                <button type="button" onClick={handleSubmit} className="btn btn-dark mx-1">
                   Save changes
                 </button>
               </div>

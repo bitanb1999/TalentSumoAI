@@ -51,7 +51,6 @@ const Question = () => {
   //   return () => clearInterval(intervalId);
   // }, [isActive, counter]);
   const [isActive, setIsActive] = useState(false);
-  const [create, setCreate] = useState([]);
 
   const {
     status,
