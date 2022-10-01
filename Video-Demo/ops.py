@@ -39,7 +39,7 @@ class Bounds:
 
 
 def segment(array, timestamps, metrics: Metrics):
-    assert len(timestamps) == len(array)
+    #assert len(timestamps) == len(array)
     array_bool = (
         array > metrics.value_threshold
         if metrics.above
