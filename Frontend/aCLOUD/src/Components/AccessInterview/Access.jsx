@@ -10,12 +10,12 @@ const Access = () => {
 
     const handleBack = (e) => {
         e.preventDefault();
-        navigate('/create');
+        navigate('/internalbot');
     }
 
     const handleSave = (e) => {
         e.preventDefault();
-        navigate('/notification&message');
+        navigate('/externalbot');
     }
 
     return (
