@@ -11,9 +11,9 @@ root = "."
 
 
 def get_gaze_score(df):
-    x_mean = df[[" X_{}".format(x) for x in range(36, 42)]].mean(axis=1)
-    y_mean = df[[" Y_{}".format(x) for x in range(36, 42)]].mean(axis=1)
-    z_mean = df[[" Z_{}".format(x) for x in range(36, 42)]].mean(axis=1)
+    x_mean = df[[f" X_{x}" for x in range(36, 42)]].mean(axis=1)
+    y_mean = df[[f" Y_{x}" for x in range(36, 42)]].mean(axis=1)
+    z_mean = df[[f" Z_{x}" for x in range(36, 42)]].mean(axis=1)
     magnitude = -1 * (x_mean ** 2 + y_mean ** 2 + z_mean ** 2) ** 0.5
 
     x_mean = x_mean / magnitude
@@ -73,7 +73,9 @@ class Video:
 
         self.video = video
 
-        self.df = pd.read_csv(os.path.join(root, os.path.join("processed", video + ".csv")))
+        self.df = pd.read_csv(
+            os.path.join(root, os.path.join("processed", f"{video}.csv"))
+        )
         self.timestamps = self.df[" timestamp"].values
         self.gaze_scores = get_gaze_score(self.df)
         self.gaze_scores = (self.gaze_scores - np.min(self.gaze_scores)) / (
@@ -81,7 +83,7 @@ class Video:
         )
         self.calculate_gaze_metrics()
   #audio
-        self.signal_raw, sr = librosa.load(os.path.join(root, video + ".wav"), sr=None)
+        self.signal_raw, sr = librosa.load(os.path.join(root, f"{video}.wav"), sr=None)
         self.signal_raw = np.abs(self.signal_raw)
         signal_length = len(self.signal_raw)
         factor = signal_length // 2000
@@ -94,18 +96,20 @@ class Video:
         self.smile_scores = np.asarray(
             [
                 int(x)
-                for x in open(os.path.join(root, video + ".txt"), "r")
-            .readline()
-            .split(",")
+                for x in open(os.path.join(root, f"{video}.txt"), "r")
+                .readline()
+                .split(",")
             ]
         )
         self.calculate_smile_metrics()
   #gesture 
-    
+
         self.gesture_scores = np.asarray(
             [
                 int(x)
-                for x in open(os.path.join(root, video + ".hands.txt"), "r").readline()
+                for x in open(
+                    os.path.join(root, f"{video}.hands.txt"), "r"
+                ).readline()
             ]
         )
         self.calculate_gesture_metrics()

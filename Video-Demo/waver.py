@@ -27,6 +27,6 @@ if __name__ == "__main__":
                 "ffmpeg",
                 "-i",
                 os.path.join(args.source, file),
-                os.path.join(args.source, "processed", file[:-4] + ".wav"),
+                os.path.join(args.source, "processed", f"{file[:-4]}.wav"),
             ]
         )

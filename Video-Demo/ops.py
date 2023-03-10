@@ -58,7 +58,7 @@ def segment(array, timestamps, metrics: Metrics):
     last_time = 0
     for time, value in zip(timestamps, array_bool_expanded):
         if value:
-            prev_time = time_in_state[-1] if len(time_in_state) > 0 else 0
+            prev_time = time_in_state[-1] if time_in_state else 0
             time_in_state.append(prev_time + time - last_time)
         else:
             time_in_state.append(0)
@@ -71,10 +71,12 @@ def segment(array, timestamps, metrics: Metrics):
 
 
 def summarize(segments: Segments):
-    count = 0
-    for i in range(1, len(segments.time_thresholded)):
-        if not segments.time_thresholded[i - 1] and segments.time_thresholded[i]:
-            count += 1
+    count = sum(
+        1
+        for i in range(1, len(segments.time_thresholded))
+        if not segments.time_thresholded[i - 1]
+        and segments.time_thresholded[i]
+    )
     if segments.time_thresholded[-1]:
         count -= 1
 
@@ -98,10 +100,7 @@ def score(summary: Summary, bounds: Bounds):
         score = 3
     if count >= bounds[2]:
         score = 4
-    if increasing:
-        return score
-    else:
-        return 5 - score
+    return score if increasing else 5 - score
 
 
 if __name__ == "__main__":

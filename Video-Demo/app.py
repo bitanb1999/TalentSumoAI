@@ -123,9 +123,7 @@ app.layout = layout
 
 @callback(Output("page-content", "children"), Input("url", "pathname"))
 def display_page(pathname):
-    if pathname == "/":
-        return table.layout
-    return graphs.layout
+    return table.layout if pathname == "/" else graphs.layout
 
 
 if __name__ == "__main__":

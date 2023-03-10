@@ -59,44 +59,44 @@ class AllVideos:
         audio_scores = []
         gaze_scores = []
         gesture_scores = []
+        number = 1
+        feedback_col = f"Comments on video for Q{number}"
         for video in self.videos:
             name = video.video[:]
-            number = 1
             video_names.append(video.video)
-            feedback_col = f"Comments on video for Q{number}"
             #take the feedback here, if needed
             video_feedback.append("A"
-                
+
             )
             #coming from openface csv file
             gaze_summary_counts.append(video.gaze_summary.count_per_minute)
             gaze_summary_fractions.append(video.gaze_summary.fraction)
-           
+
 
             smile_counts.append(video.smile_summary.count_per_minute)
-            
+
             gesture_count.append(video.gesture_summary.count_per_minute)
-            
+
             smile_scores.append(video.smile_score)
             audio_scores.append(video.audio_score)
             gaze_scores.append(video.gaze_score)
             gesture_scores.append(video.gesture_score)
 
-           
+
         return pd.DataFrame(
             {
                 "Video": video_names,
                 "Feedback": video_feedback,
                 "Gaze Counts": gaze_summary_counts,
                 "Gaze Fractions": gaze_summary_fractions,
-               
+
                 "Smile Count": smile_counts,
-                
+
                 "Gesture Count": gesture_count,
-               
+
                 "Smile Score": smile_scores,
                 "Smile Percentile": pd.Series(smile_counts).rank(pct=True),
-              
+
                 "Gaze Score": gaze_scores,
                 "Gaze Percentile": pd.Series(gaze_summary_counts).rank(pct=True, ascending=False),
                 "Gesture Score": gesture_scores,

@@ -24,7 +24,7 @@ if __name__ == "__main__":
     files = filter(
         lambda x: os.path.isfile(os.path.join(args.dest, x)), os.listdir(args.dest)
     )
-    names = set([x[:-5] for x in files])
+    names = {x[:-5] for x in files}
     # print(names)
     responses = pd.read_csv(args.csv)
     # print(responses.columns)

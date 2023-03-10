@@ -14,7 +14,7 @@ audio_ignore_range = np.linspace(0, 1, 11)
 
 print(audio_ignore_range)
 
-for thresh in audio_thresh_range:
-    for min in audio_min_threshold_range:
-        for ignore in audio_ignore_range:
+for _ in audio_thresh_range:
+    for _ in audio_min_threshold_range:
+        for _ in audio_ignore_range:
             audio_metrics = Metrics()

@@ -18,15 +18,12 @@ class handDetector():
     def findHands(self,img, draw = True):
         imgRGB = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         self.results = self.hands.process(imgRGB)
-        if self.results.multi_hand_landmarks:
-            return True
-        else:
-            return False
+        return bool(self.results.multi_hand_landmarks)
 
     def findPosition(self, img):
         lmlist = []
         myHand = self.results.multi_hand_landmarks[0]
-        for id, lm in enumerate(myHand.landmark):
+        for lm in myHand.landmark:
             h, w, c = img.shape
             cx, cy = int(lm.x * w), int(lm.y * h)
             lmlist.append([cx, cy])
@@ -37,15 +34,7 @@ detector = handDetector()
 def get_hand_vector_img(img):
     hand = 0
     is_hand_in_frame = detector.findHands(img)
-    if is_hand_in_frame:
-        # position = detector.findPosition(img)
-        hand = 1
-        # pos = position
-    else:
-        hand = 0
-        # pos = -1
-    # assert len(hand_vec) == len(img_list)
-    return hand
+    return 1 if is_hand_in_frame else 0
 
 def main(fpath, spath):
     hand_vec = []
@@ -59,7 +48,7 @@ def main(fpath, spath):
             break
     print(len(hand_vec))
     hand_vec = ''.join([str(i) for i in hand_vec])
-    with open(spath +'.hands'+ '.txt', 'w+') as g:
+    with open(f'{spath}.hands.txt', 'w+') as g:
         g.write(hand_vec)
 
 if __name__ == '__main__':
